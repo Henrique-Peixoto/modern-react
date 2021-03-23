@@ -1,20 +1,13 @@
 import './App.css';
+import Navbar from './navbar'
+import Home from './home'
 
 function App() {
-  const title = 'Welcome to the Dojo Blog!'
-  const liked = 50
-  const link = "http://www.google.com"
-
   return (
     <div className="App">
+      <Navbar />
       <div className="content">
-        <h1>{ title }</h1>
-        <p>Liked { liked } times</p>
-        <p>{ 10 }</p>
-        <p>{ "Hi you guys doing?" }</p>
-        <p>{ [1,"potato",2,"apple"] }</p>
-        <p>{ Math.random() }</p>
-        <a href={link}>Google</a>
+        <Home />
       </div>
     </div>
   );
