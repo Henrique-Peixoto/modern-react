@@ -8,25 +8,27 @@ const Home = () => {
     { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'Luigi', id: 3 }
   ])
 
+  const [name, setName] = useState('mario')
+
   const handleDelete = id => {
     const newBlogs = blogs.filter(blog => blog.id !== id)
     setBlogs(newBlogs)
   }
 
-  // This function is fired every time the DOM is rendered
+  // This function is fired every time the DOM is rendered.
+  // To prevent this behavior, we can add a "dependecies array".
+  // It can be an empty array or we can add real dependencies.
+  // The only dependencie we gonna have is "name".
   useEffect(() => {
     console.log('using useEffect hook')
-    console.log(blogs)
-  })
+    console.log(name)
+  }, [name])
 
   return (
     <div className="home">
       <BlogList blogs={blogs} title="All blogs" handleDelete={handleDelete}/>
-      <BlogList 
-        blogs={blogs.filter(blog => blog.author === 'Mario')} 
-        title="Mario's blogs" 
-        handleDelete={handleDelete}
-      />
+      <button onClick={() => setName('luigi')}>Change name!</button>
+      <p>{ name }</p>
     </div>
   );
 }
