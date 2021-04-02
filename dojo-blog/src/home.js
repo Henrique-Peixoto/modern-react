@@ -1,3 +1,5 @@
+// Use "npx json-server --watch data/db.json --port 8000", to set a json server
+
 import { useState, useEffect } from 'react'
 import BlogList from './blogList'
  
