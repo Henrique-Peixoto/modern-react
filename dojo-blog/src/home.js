@@ -1,37 +1,11 @@
-// Use "npx json-server --watch data/db.json --port 8000", to set a json server
+// Use "npm run json-server", to set a json server
 
-import { useState, useEffect } from 'react'
 import BlogList from './blogList'
+import useFetch from './useFetch'
  
 const Home = () => {
-  const [blogs, setBlogs] = useState(null)
-  const [isPending, setIsPending] = useState(true)
-  const [error, setError] = useState(null)
-
-  // This function is fired every time the DOM is rendered.
-  // To prevent this behavior, we can add a "dependecies array".
-  // It can be an empty array or we can add real dependencies.
-  // The only dependencie we gonna have is "name".
-  useEffect(() => {
-    setTimeout(() => {
-      // Fetching the data from the JSON server
-      fetch('http://localhost:8000/blogs')
-      .then(res => {
-        // This sets the "message" propertie that will be catched by the error (if it happens).
-        if(!res.ok) throw Error('Could not fetch the data for that resource!')
-        return res.json()
-      })
-      .then(data => {
-        setBlogs(data)
-        setIsPending(false)
-        setError(null)
-      })
-      .catch(err => {
-        setError(err.message)
-        setIsPending(false)
-      })
-    }, 1000)
-  },[])
+  // "data: blogs" means, grab the data, but call it "blogs" in this context
+  const { data: blogs, isPending, error } = useFetch('http://localhost:8000/blogs')
 
   return (
     <div className="home">
