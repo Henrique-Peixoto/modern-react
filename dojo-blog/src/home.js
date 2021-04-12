@@ -7,6 +7,10 @@ const Home = () => {
   // "data: blogs" means, grab the data, but call it "blogs" in this context
   const { data: blogs, isPending, error } = useFetch('http://localhost:8000/blogs')
 
+  // When we change quickly between Home and New Blogs, the Home component
+  // is unmouted, but React try to update it's state, which leads to an error, 
+  // we gonna fix this on the next lesson.
+
   return (
     <div className="home">
       { error && <div>{ error }</div> }
