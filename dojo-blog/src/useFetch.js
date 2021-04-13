@@ -11,9 +11,13 @@ const useFetch = url => {
   // It can be an empty array or we can add real dependencies.
   // The only dependencie we gonna have is "name".
   useEffect(() => {
+    // We can associate the AbortController with a fetch request
+    // to prevent it from happening
+    const abortCont = new AbortController()
+
     setTimeout(() => {
       // Fetching the data from the JSON server
-      fetch(url)
+      fetch(url, { signal: abortCont.signal })
       .then(res => {
         // This sets the "message" propertie that will be catched by the error (if it happens).
         if(!res.ok) throw Error('Could not fetch the data for that resource!')
@@ -25,10 +29,17 @@ const useFetch = url => {
         setError(null)
       })
       .catch(err => {
-        setError(err.message)
-        setIsPending(false)
+        if(err.name === "AbortError"){
+          console.log("Fetch aborted!")
+        }else{
+          setError(err.message)
+          setIsPending(false)
+        }
       })
     }, 1000)
+
+    // If the fetch gets aborted
+    return () => abortCont.abort()
   }, [url])
 
   // The returning values from useFetch
