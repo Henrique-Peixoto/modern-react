@@ -1,6 +1,7 @@
 import Navbar from './navbar'
 import Home from './home'
 import Create from './Create'
+import BlogDetails from './BlogDetails'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 function App() {
@@ -21,6 +22,10 @@ function App() {
             </Route>
             <Route path="/create">
               <Create />
+            </Route>
+            {/* ":id" indicates a dinamic value */}
+            <Route path="/blogs/:id">
+              <BlogDetails />
             </Route>
           </Switch>
         </div>

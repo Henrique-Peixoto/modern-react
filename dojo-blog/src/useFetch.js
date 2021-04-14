@@ -36,7 +36,7 @@ const useFetch = url => {
           setIsPending(false)
         }
       })
-    }, 1000)
+    }, 500)
 
     // If the fetch gets aborted
     return () => abortCont.abort()
