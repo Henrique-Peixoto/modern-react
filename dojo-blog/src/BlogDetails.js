@@ -5,7 +5,7 @@ const BlogDetails = () => {
   // This allows us to grab parameters from the URL
   // We want the ":id" in the route that leads to a blog
   const { id } = useParams()
-  const { data:blog, error, isPending} = useFecth('http://localhost:8000/blogs/' + id)
+  const { data:blog, error, isPending} = useFecth(`http://localhost:8000/blogs/${id}`)
 
   return (
     <div className="blog-detail">
