@@ -5,26 +5,29 @@ const Create = () => {
   const [body, setBody] = useState('')
   const [author, setAuthor] = useState('')
   const [isPending, setIsPending] = useState(false)
+  const [isAuthorEmpty, setIsAuthorEmpty] = useState(false)
 
   const handleSubmit = e => {
     e.preventDefault()
     const blog = { title, body, author }
 
-    setIsPending(true)
+    if(author !== ''){
+      setIsPending(true)
 
-    setTimeout(() => {
-      fetch('http://localhost:8000/blogs', {
-        method: 'POST',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(blog)
-      }).then(() => {
-        console.log('New blog added!')
-        setIsPending(false)
-        setTitle('')
-        setBody('')
-        setAuthor('')
-      })
-    }, 500);
+      setTimeout(() => {
+        fetch('http://localhost:8000/blogs', {
+          method: 'POST',
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(blog)
+        }).then(() => {
+          console.log('New blog added!')
+          setIsPending(false)
+          setTitle('')
+          setBody('')
+          setAuthor('')
+        })
+      }, 500);
+    }
   }
 
   return (
@@ -46,13 +49,18 @@ const Create = () => {
         ></textarea>
         <select
           value={ author }
-          onChange={(e) => setAuthor(e.target.value)}
+          onChange={(e) => {
+              setAuthor(e.target.value)
+              setIsAuthorEmpty(false)
+            }
+          }
         >
           <option value="" hidden>-- Select author --</option>
           <option value="Kant">Kant</option>
           <option value="Kierkegaard">Kierkegaard</option>
         </select>
-        { !isPending && <button>Add blog</button> }
+        { isAuthorEmpty && <p>Please, select an author.</p> }
+        { !isPending && <button onClick={() => {if(author === '') setIsAuthorEmpty(true)}}>Add blog</button> }
         { isPending && <button disabled>Adding blog...</button>}
       </form>
     </div>
