@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 const Create = () => {
   const [title, setTitle] = useState('')
@@ -6,6 +7,8 @@ const Create = () => {
   const [author, setAuthor] = useState('')
   const [isPending, setIsPending] = useState(false)
   const [isAuthorEmpty, setIsAuthorEmpty] = useState(false)
+  // The "history" represents the page history from the tab we are using
+  const history = useHistory()
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -25,6 +28,10 @@ const Create = () => {
           setTitle('')
           setBody('')
           setAuthor('')
+          // We are going one page back in the page history
+          // history.go(-1)
+          // Specifying the page we wanna go after the POST gets done
+          history.push("/")
         })
       }, 500);
     }
