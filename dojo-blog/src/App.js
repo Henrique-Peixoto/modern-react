@@ -2,6 +2,7 @@ import Navbar from './navbar'
 import Home from './home'
 import Create from './Create'
 import BlogDetails from './BlogDetails'
+import NotFound from './NotFound'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
            * If we don't use the Switch component, all the matched routes will be returned
            */}
           <Switch>
-            {/**The "exact" attribute allows that only the exact path we want to be matched
+            {/**The "exact" attribute allows that only the exact path we want to be matched will be matched
              * notice that "/" matches with "/create", but with "exact", it doesn't happen anymore
             */}
             <Route exact path="/">
@@ -26,6 +27,10 @@ function App() {
             {/* ":id" indicates a dinamic value */}
             <Route path="/blogs/:id">
               <BlogDetails />
+            </Route>
+            {/* The '*' indicates that any other route that wast'n catch by the routes above, will be caught here */}
+            <Route path="*">
+              <NotFound />
             </Route>
           </Switch>
         </div>
