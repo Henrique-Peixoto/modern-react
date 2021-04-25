@@ -1,0 +1,52 @@
+{
+  "blogs": [
+    {
+      "title": "Do you know how to cook bread?",
+      "body": "I'm going to teach how to cook a crunchy bread with the ingredientes that you have in your house!",
+      "author": "Gordom Ramsey",
+      "id": 1
+    },
+    {
+      "title": "Get ready for Easter's shopping",
+      "body": "In this article you will learn fighting technics to get the perfect chocolate eggs for your kids in this Easter.",
+      "author": "Karate Rabbit",
+      "id": 2
+    },
+    {
+      "title": "Kant on Ethics",
+      "body": "I'l teach you Ethics.",
+      "author": "kant",
+      "id": 3
+    },
+    {
+      "title": "How to train yout dragon",
+      "body": "It isn't simple, trust me.",
+      "author": "kierkegaard",
+      "id": 4
+    },
+    {
+      "title": "Shrek",
+      "body": "Why is it so good?",
+      "author": "kant",
+      "id": 5
+    },
+    {
+      "title": "Running out of crativity?",
+      "body": "Me too. :/",
+      "author": "",
+      "id": 6
+    },
+    {
+      "title": "sdfasdf",
+      "body": "asdfasdf",
+      "author": "Kant",
+      "id": 7
+    },
+    {
+      "title": "asd",
+      "body": "asd",
+      "author": "Kant",
+      "id": 8
+    }
+  ]
+}
